@@ -24,7 +24,12 @@ function Main () {
     const [saved,setSaved] = useState(false);
 
     setInterval(() => {
-        setCurrDate(new Date().toLocaleString());
+        let currTime = new Date();
+        let hour = currTime.getHours();
+        let modify = hour>12? hour-12 : hour;
+        currTime.setHours(modify);
+        setCurrDate(currTime.toLocaleString());
+//        setCurrDate(new Date().toLocaleString());
     },1000)
 
     const findCity = async(e) => {
@@ -144,6 +149,23 @@ function Main () {
 
     const {ref: bRef, inView: buttonVisible} = useInView();
 
+    const [rightOpen,setRightOpen] = useState(false);
+    const rightChange = () => {
+        setLeftOpen(false);
+        setRightOpen(!rightOpen);
+    }
+    const close = () => {
+        setRightOpen(false);
+    }
+
+    const [leftOpen,setLeftOpen] = useState(false);
+    const leftChange = () => {
+        setRightOpen(false);
+        setLeftOpen(!leftOpen);
+    }
+    const leftClose = () => {
+        setLeftOpen(false);
+    }
 
     return(
         <div className="mid">
@@ -152,11 +174,15 @@ function Main () {
                     contactClick={contactClick} 
                     homeOpen={homeOpen}
                     aboutOpen={aboutOpen}
-                    contactOpen={contactOpen}/>
+                    contactOpen={contactOpen}
+                    leftOpen={leftOpen}
+                    leftChange={leftChange}
+                    leftClose={leftClose}/>
             {aboutOpen? <About /> : 
             <>{contactOpen? <Contact /> :
             <>
             {err? <div className="errorContainer">
+                        <img className="errImg" src="/errorImg.jpg"/>
                         <div className="error">{err}</div>
                         <button className="errButton" onClick={removeError}>Back</button>
                     </div> :
@@ -182,7 +208,7 @@ function Main () {
                     </div>
                     <div className="line">--------------------------</div>
                     <div className="detailContainer">
-                        <div className="condition">{condition}</div>
+                        <div className="condition">{condition.toUpperCase()}</div>
                         <div className="wind">Wind Speed = {windSpeed}</div>
                     </div>
                     <div className="saveContainer" ref={bRef}>
@@ -204,7 +230,7 @@ function Main () {
                     </div>
                 </div>
             }             
-         <Right saveName = {saveName} deleteSave={deleteSave} openSave = {openSave}/>
+         <Right saveName = {saveName} deleteSave={deleteSave} openSave = {openSave} rightChange={rightChange} rightOpen={rightOpen} close={close}/>
         </>
             }</>}
         </div>

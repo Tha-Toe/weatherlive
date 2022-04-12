@@ -26,7 +26,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 .leftInnerChild {
     margin-left: 10px;
@@ -45,7 +45,7 @@
 @media (max-width: 800px) {
     .leftContainer{
         position: absolute;
-        width: 35%;
+        width: 45%;
         transition: all .5s ease-in-out;
     }
     .leftOrigin {

@@ -5,30 +5,25 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSquarePlus} from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from 'usehooks-ts';
 import {motion} from "framer-motion";
+import {leftChange} from "../left/Left"
 
-function Right ({saveName,deleteSave,openSave}) {
+function Right ({saveName,deleteSave,openSave,rightChange,close,rightOpen}) {
 
-    const [open,setOpen] = useState(false);
     const [offsetWidth,setOffsetWidth] = useState("");
 
     const rightRef = useRef();
     const matches = useMediaQuery("(max-width : 800px)");
 
 
-    const leftChange = () => {
-        setOpen(!open);
-    }
-    const close = () => {
-        setOpen(false);
-    }
+
     useEffect(() => {
         setOffsetWidth(rightRef.current.offsetWidth);
     },)
 
 
     return(
-        <div className="right" style={matches && !open? {transform:`translateX(${offsetWidth}px)`} : {transform:`translateX(0px)`}}>
-            <motion.div className="rightIcon" onClick={leftChange}
+        <div className="right" style={matches && !rightOpen? {transform:`translateX(${offsetWidth}px)`} : {transform:`translateX(0px)`}}>
+            <motion.div className="rightIcon" onClick={() => {rightChange()}}
                                 whileHover={{
                                     position: "relative",
                                     scale:[1,1.2,1],
