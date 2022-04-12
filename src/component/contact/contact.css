@@ -1,0 +1,78 @@
+.contactContainer {
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.contactHeader {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    color: #fff;
+}
+
+.addressContainer {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.addressNote {
+    color: #fff;
+}
+.addressIcon {
+    margin-right: 10px;
+    color: #00FFAE;
+    font-size: 24px;
+}
+.addressLink:hover {
+    color: blue;
+}
+
+.contactMid {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.contactLeft {
+    width: 50%;
+}
+.cLAnimation {
+  position: relative;
+  animation: clanimation .5s ease-in ;
+}
+@keyframes clanimation {
+  0% {opacity: 0; top: 30px;}
+  100% {opacity: 1; top: 0;}
+}
+
+
+
+@media (max-width: 800px) {
+    .contactContainer {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .contactMid {
+        width: 90%;
+    }
+
+    .contactHeader {
+        font-size: 20px;
+    }
+    .addressNote {
+        font-size: 14px;
+    }
+
+}
