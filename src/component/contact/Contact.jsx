@@ -38,7 +38,7 @@ export default function Contact () {
                     </div>
                     <div className="addressContainer">
                         <FontAwesomeIcon icon = {faEnvelope} className="addressIcon" />
-                            <div className="addressNote">thatoe510@gmail.com</div>
+                            <div className="addressNote">thatoesaung510dev@gmail.com</div>
                     </div>
                     <div className="addressContainer">
                         <FontAwesomeIcon icon = {faGithub} className="addressIcon" />
